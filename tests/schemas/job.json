@@ -1,0 +1,70 @@
+{
+   "$schema":"http://json-schema.org/draft-04/schema#",
+   "title":"Job Schema",
+   "type":"object",
+   "properties":{
+      "uid":{
+         "description":"Unique ID of a job",
+         "type":"integer"
+      },
+      "creation_time":{
+         "description":"Creation time of the job",
+         "type":"integer"
+      },
+      "content":{
+         "description":"Content of the job",
+         "type":"string"
+      },
+      "cost_function":{
+         "description":"List of cost function attributes",
+         "type":"object",
+         "properties":{
+            "type":{
+               "description":"Type of cost function used",
+               "type":"string",
+               "default":"naive"
+            },
+            "reward":{
+               "description":"Reward at a given time",
+               "type":"integer"
+            },
+            "penalty":{
+               "description":"Penalty if job not completed",
+               "type":"integer"
+            },
+            "valid_time":{
+               "description":"The time the goods have to be delivered by",
+               "type":"integer"
+            }
+         },
+         "required":[
+            "type",
+            "reward",
+            "penalty",
+            "valid_time"
+         ]
+      },
+      "pick_up":{
+         "description":"List of pick up coordinates",
+         "type":"array",
+         "items":{
+            "type":"number"
+         }
+      },
+      "destination":{
+         "description":"List of destination coordinates",
+         "type":"array",
+         "items":{
+            "type":"number"
+         }
+      }
+   },
+   "required":[
+      "uid",
+      "creation_time",
+      "content",
+      "cost_function",
+      "pick_up",
+      "destination"
+   ]
+}
